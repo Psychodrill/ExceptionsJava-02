@@ -1,52 +1,53 @@
-// // Напишите программу, которая проверяет, является ли введенная текстовая строка числом с плавающей точкой (float).
-// // Программа пытается преобразовать введенную строку в число float, и если это успешно, она выводит полученное число.
-// // Если преобразование не удалось, программа выдаёт сообщение об ошибке
-// // Your input is not a float number. Please, try again.
-// // и возвращает специальное значение Float.NaN, чтобы обозначить ошибку.
-
-// import java.util.InputMismatchException;
-// import java.util.Scanner;
-
-// public class Homework {
-
-//     public static void main(String[] args) {
-//         String input;
+// Напишите программу, которая проверяет, является ли введенная текстовая строка числом с плавающей точкой (float).
+// Программа пытается преобразовать введенную строку в число float, и если это успешно, она выводит полученное число.
+// Если преобразование не удалось, программа выдаёт сообщение об ошибке
+// Your input is not a float number. Please, try again.
+// и возвращает специальное значение Float.NaN, чтобы обозначить ошибку.
 
 
-//         if (args.length == 0) {
-//             input = "3.14"; // По умолчанию используем "3.14", если аргумент не передан
-//         } 
-//         else {
-//             input = args[0];
-//         }
+public class Homework {
 
-//         float result = IsFloat.isFloat(input);
-//         System.out.println(result);
-//     }
+    public static void main(String[] args) {
+        String input;
+
+
+        if (args.length == 0) {
+           // input = "3.14"; // По умолчанию используем "3.14", если аргумент не передан
+            input = "text";
+        } 
+        else {
+            input = args[0];
+        }
+
+        float result = IsFloat.isFloat(input);
+        System.out.println(result);
+    }
     
-// }
-// class IsFloat {
-//     public static float isFloat(String input) {
+}
+class IsFloat {
+    public static float isFloat(String input) {
 
-//         Scanner scanner=new Scanner(System.in);
-//         float number = Float.NaN;
+        //Scanner scanner=new Scanner(System.in);
+        float number = Float.NaN;
 
-//             try{
-//                 number =scanner.nextFloat();
-//             }
-//             catch(InputMismatchException e){
-//                 System.err.println("Your input is not a float number. Please, try again");
-//             }
-//             finally{
-//                 scanner.close();
-//             }
-//             // if(scanner.hasNextInt()) number = scanner.nextFloat();
-//             // else System.err.println("Your input is not a float number. Please, try again");
+            try{
+                number =Float.parseFloat(input);
+            }
+            catch(NumberFormatException e){
+                System.err.println("Your input is not a float number. Please, try again.");
+               //throw new RuntimeException("Your input is not a float number. Please, try again.");
+               //System.out.println(Float.NaN);
+               return number;
+            }
 
-//         return number;
 
-//     }
-// }
+            // if(scanner.hasNextInt()) number = scanner.nextFloat();
+            // else System.err.println("Your input is not a float number. Please, try again");
+
+            return number;
+
+    }
+}
 
 
 
@@ -161,39 +162,39 @@
 
 
 
-//---------------------------------------------------------
-// Напишите программу, которая принимает символ a в качестве аргумента и выполняет следующую проверку:
-// если символ a равен пробелу '', программа должна выбрасывать исключение с сообщением
-// "Пустая строка введена.".
-// В противном случае программа должна возвращать сообщение
-// "Ваш ввод - [символ]", где [символ] заменяется на введенный символ a.
+// //---------------------------------------------------------
+// // Напишите программу, которая принимает символ a в качестве аргумента и выполняет следующую проверку:
+// // если символ a равен пробелу '', программа должна выбрасывать исключение с сообщением
+// // "Пустая строка введена.".
+// // В противном случае программа должна возвращать сообщение
+// // "Ваш ввод - [символ]", где [символ] заменяется на введенный символ a.
 
 
 
-class Expr {
-    public static String expr(char a) throws Exception {
+// class Expr {
+//     public static String expr(char a) throws Exception {
 
-        if(Character.isWhitespace(a)){
-           throw new RuntimeException("Empty string has been input.");
-        }
-        return String.format("Your input was - %s",a);
-}
-}
-public class Homework {
-    public static void main(String[] args) {
-        char a;
+//         if(Character.isWhitespace(a)){
+//            throw new RuntimeException("Empty string has been input.");
+//         }
+//         return String.format("Your input was - %s",a);
+// }
+// }
+// public class Homework {
+//     public static void main(String[] args) {
+//         char a;
 
-        if (args.length == 0) {
-            a = ' '; // Значение по умолчанию, если аргументы не были предоставлены
-        } else {
-            a = args[0].charAt(0); // Преобразуйте первый аргумент командной строки в символ
-        }
+//         if (args.length == 0) {
+//             a = ' '; // Значение по умолчанию, если аргументы не были предоставлены
+//         } else {
+//             a = args[0].charAt(0); // Преобразуйте первый аргумент командной строки в символ
+//         }
 
-        try {
-            String result = Expr.expr(a);
-            System.out.println("Result: " + result);
-        } catch (Exception e) {
-            System.err.println("Error: " + e.getMessage());
-        }
-    }
-}
+//         try {
+//             String result = Expr.expr(a);
+//             System.out.println("Result: " + result);
+//         } catch (Exception e) {
+//             System.err.println("Error: " + e.getMessage());
+//         }
+//     }
+// }
